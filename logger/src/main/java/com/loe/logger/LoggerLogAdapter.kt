@@ -10,7 +10,7 @@ import android.widget.TextView
 import com.loe.logger.util.LoggerTimeUtil
 import com.loe.logger.util.LoggerTools
 
-class LoggerAdapter(private val context: Context, var list: List<LoggerActivity.Bean>) :
+class LoggerLogAdapter(private val context: Context, var list: List<LoggerLogFragment.Bean>) :
     BaseAdapter()
 {
     private val inflater: LayoutInflater = LayoutInflater.from(context)
@@ -44,12 +44,10 @@ class LoggerAdapter(private val context: Context, var list: List<LoggerActivity.
         {
             item = Item()
             // 获取Item布局构造view
-            view = inflater.inflate(R.layout.logger_item, null)
+            view = inflater.inflate(R.layout.logger_log_item, null)
             // 获取布局子元素
-            item.textUrl = view!!.findViewById(R.id.textUrl) as TextView
+            item.textMsg = view!!.findViewById(R.id.textMsg) as TextView
             item.textTime = view!!.findViewById(R.id.textTime) as TextView
-            item.textParams = view!!.findViewById(R.id.textParams) as TextView
-            item.textResult = view!!.findViewById(R.id.textResult) as TextView
             // 将Item绑定到view里
             view.tag = item
         } else
@@ -58,11 +56,9 @@ class LoggerAdapter(private val context: Context, var list: List<LoggerActivity.
             item = view.tag as Item
         }
         // 显示
-        item.textUrl?.text = bean.url
+        item.textMsg?.text = bean.tag + "：" + bean.msg
         item.textTime?.text = LoggerTimeUtil.dynamicTimeFormat(bean.time)
-        item.textParams?.text = bean.params
-        item.textResult?.text = bean.result
-
+        item.textMsg?.setTextColor(if(bean.type == "e") LoggerTools.mainColor else LoggerTools.textColor)
         (view as ViewGroup).getChildAt(0).setBackgroundColor(if (bean.id == selectId) LoggerTools.selectColor else LoggerTools.whiteColor)
 
         return view
@@ -70,10 +66,8 @@ class LoggerAdapter(private val context: Context, var list: List<LoggerActivity.
 
     internal inner class Item
     {
-        var textUrl: TextView? = null
+        var textMsg: TextView? = null
         var textTime: TextView? = null
-        var textParams: TextView? = null
-        var textResult: TextView? = null
     }
 }
 

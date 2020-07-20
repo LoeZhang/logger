@@ -15,6 +15,8 @@ import android.widget.Toast;
 public class LoggerTools
 {
     public static final int mainColor = Color.parseColor("#dd2222");
+    public static final int yellowColor = Color.parseColor("#ffffaa");
+    public static final int textColor = Color.parseColor("#444444");
     public static final int selectColor = Color.parseColor("#f5f6fa");
     public static final int whiteColor = Color.parseColor("#ffffff");
 

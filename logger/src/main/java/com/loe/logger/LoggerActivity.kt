@@ -1,33 +1,16 @@
 package com.loe.logger
 
-import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import android.widget.TextView
-import com.loe.logger.db.LoggerSharedManager
-import com.loe.logger.json.JsonActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.loe.logger.util.LoggerTools
+import com.loe.logger.viewpager.LoggerFragTextItem
 import kotlinx.android.synthetic.main.logger_activity.*
-import org.json.JSONObject
 
-class LoggerActivity : AppCompatActivity(), View.OnLongClickListener
+class LoggerActivity : AppCompatActivity()
 {
-    class Bean(json: JSONObject)
-    {
-        var id: String = json.optString("id")
-        var url: String = json.optString("url")
-        var params: String = json.optString("params")
-        var result: String = json.optString("result")
-        var resultJson: String? = null
-        var time: Long = json.optLong("time")
-    }
-
-    private lateinit var list: java.util.ArrayList<Bean>
-    private lateinit var adapter: LoggerAdapter
-
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -41,92 +24,35 @@ class LoggerActivity : AppCompatActivity(), View.OnLongClickListener
         }
         setContentView(R.layout.logger_activity)
 
-        initList()
-        initInfo()
-        loadData()
+        initView()
     }
 
-    private fun loadData()
+    private fun initView()
     {
-        list.clear()
-        val js = LoeLogger.select()
-        for (i in 0 until js.length())
-        {
-            list.add(Bean(js.optJSONObject(i)))
-        }
-        adapter.notifyDataSetChanged()
-
-        if (list.size > 0)
-        {
-            select(0)
-        }
-
-        if(list.size > 20)
-        {
-            LoeLogger.clear(false, true)
-        }
-    }
-
-    private fun initList()
-    {
-        list = ArrayList()
-        adapter = LoggerAdapter(this, list)
-        listView.adapter = adapter
-    }
-
-    private fun initInfo()
-    {
-        buttonJson.setOnClickListener()
-        {
-            startActivity(Intent(this, JsonActivity::class.java))
-        }
-        listView.setOnItemClickListener()
-        { adapterView, view, i, l ->
-            select(i)
-        }
-
         buttonClear.setOnClickListener()
         {
-            LoeLogger.clear()
-            loadData()
+            when(viewPager.index)
+            {
+                0 ->
+                {
+                    LoeLogger.clearNet()
+                    (viewPager.nowFragment as LoggerNetFragment).loadData()
+                }
+                1 ->
+                {
+                    LoeLogger.clear()
+                    (viewPager.nowFragment as LoggerLogFragment).loadData()
+                }
+            }
         }
         buttonBack.setOnClickListener()
         {
             finish()
         }
 
-        textUrl.setOnLongClickListener(this)
-        textParams.setOnLongClickListener(this)
-        textResult.setOnLongClickListener(this)
-    }
-
-    private fun select(i: Int)
-    {
-        val bean = list[i]
-        adapter.selectId = bean.id
-        textUrl.text = bean.url
-        textParams.text = bean.params
-        if (bean.resultJson == null)
-        {
-            try
-            {
-                bean.resultJson = JSONObject(bean.result).toString(4)
-            } catch (e: Exception)
-            {
-                bean.resultJson = bean.result
-            }
-
-        }
-        textResult.text = bean.resultJson
-        LoggerSharedManager.init(applicationContext)
-        JsonActivity.putJson(bean.result)
-        adapter.notifyDataSetChanged()
-    }
-
-    override fun onLongClick(view: View?): Boolean
-    {
-        LoggerTools.copyToClipboard(this, (view as TextView).text.toString())
-        LoggerTools.show(this, "已复制到剪切板")
-        return false
+        viewPager.init(supportFragmentManager, viewLine, 0.5,
+            LoggerFragTextItem(LoggerNetFragment::class.java, menu0, LoggerTools.whiteColor, LoggerTools.yellowColor),
+            LoggerFragTextItem(LoggerLogFragment::class.java, menu1, LoggerTools.whiteColor, LoggerTools.yellowColor)
+        )
     }
 }

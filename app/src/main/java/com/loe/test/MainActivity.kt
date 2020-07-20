@@ -17,15 +17,11 @@ class MainActivity : AppCompatActivity()
 
         buttonAdd.setOnClickListener()
         {
-            val json = JSONObject()
-                .put("url","sdsddssd"+Math.random())
-                .put("params", "sds sdsd sdsjsdh可接受的")
-                .put("result", "{'name':'顺哥哥'}")
-            LoeLogger.add(json)
+            LoeLogger.net("sdsddssd" + Math.random(), "sds sdsd sdsjsdh可接受的", "{'name':'顺哥哥'}")
         }
         buttonJump.setOnClickListener()
         {
-            LoeLogger.toLogger(this)
+            LoeLogger.d("{'name':'大地撒大声地'}")
         }
     }
 
