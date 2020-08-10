@@ -2,9 +2,9 @@ package com.loe.logger
 
 import android.os.Build
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
 import com.loe.logger.util.LoggerTools
 import com.loe.logger.viewpager.LoggerFragTextItem
 import kotlinx.android.synthetic.main.logger_activity.*
@@ -51,8 +51,8 @@ class LoggerActivity : AppCompatActivity()
         }
 
         viewPager.init(supportFragmentManager, viewLine, 0.5,
-            LoggerFragTextItem(LoggerNetFragment::class.java, menu0, LoggerTools.whiteColor, LoggerTools.yellowColor),
-            LoggerFragTextItem(LoggerLogFragment::class.java, menu1, LoggerTools.whiteColor, LoggerTools.yellowColor)
+            LoggerFragTextItem(LoggerNetFragment::class.java, menu0, LoggerTools.textColor, LoggerTools.mainColor),
+            LoggerFragTextItem(LoggerLogFragment::class.java, menu1, LoggerTools.textColor, LoggerTools.mainColor)
         )
     }
 }

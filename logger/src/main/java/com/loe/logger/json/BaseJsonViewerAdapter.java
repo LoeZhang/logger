@@ -1,6 +1,6 @@
 package com.loe.logger.json;
 
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView;
 
 /**
  * Created by yuyuhang on 2017/11/30.

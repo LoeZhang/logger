@@ -1,8 +1,7 @@
 package com.loe.logger.viewpager;
 
+import android.support.v4.app.Fragment;
 import android.widget.TextView;
-
-import androidx.fragment.app.Fragment;
 
 @SuppressWarnings("rawtypes")
 public class LoggerFragTextItem extends LoggerViewPagerItem

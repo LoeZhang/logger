@@ -11,7 +11,6 @@ android {
         minSdkVersion 16
         targetSdkVersion 28
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
 
@@ -25,7 +24,8 @@ android {
 
 dependencies {
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    api "androidx.recyclerview:recyclerview:1.1.0"
+    api 'com.android.support:support-v4:28.0.0'
+    api 'com.android.support:appcompat-v7:28.0.0'
+    api "com.android.support:recyclerview-v7:28.0.0"
     api 'com.github.open-android:Logger:v1.0.0'
 }

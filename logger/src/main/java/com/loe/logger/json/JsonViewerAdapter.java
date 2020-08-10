@@ -1,6 +1,7 @@
 package com.loe.logger.json;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
@@ -14,8 +15,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by yuyuhang on 2017/11/29.

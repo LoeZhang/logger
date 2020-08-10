@@ -2,6 +2,9 @@ package com.loe.logger.viewpager;
 
 import android.content.Context;
 import android.os.Build;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,10 +14,6 @@ import android.widget.LinearLayout;
 
 import java.util.Arrays;
 import java.util.List;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.viewpager.widget.ViewPager;
 
 public class LoggerSlideViewPager extends ViewPager implements OnClickListener
 {
@@ -155,6 +154,17 @@ public class LoggerSlideViewPager extends ViewPager implements OnClickListener
             @Override
             public void onPageScrolled(int i, float scale, int arg2)
             {
+                ////////////////////////////// 毛毛虫模式 ///////////////////////////////
+                if(scale > 0.5)
+                {
+                    if(W != 0 ) params.width = (int) (W * wRate + W * (1 - scale) * 2);
+                    scale = (scale - 0.5f) * 2;
+                }else
+                {
+                    if(W != 0 ) params.width = (int) (W * wRate + W * scale * 2);
+                    scale = 0;
+                }
+                ////////////////////////////////////////////////////////////////////////
                 setPosition((int) ((i + scale) * W));
             }
 

@@ -1,12 +1,11 @@
 package com.loe.test
 
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.MotionEvent
-import androidx.appcompat.app.AppCompatActivity
 import com.loe.logger.LoeLogger
 import com.loe.logger.util.LoggerTools
 import kotlinx.android.synthetic.main.activity_main.*
-import org.json.JSONObject
 
 class MainActivity : AppCompatActivity()
 {

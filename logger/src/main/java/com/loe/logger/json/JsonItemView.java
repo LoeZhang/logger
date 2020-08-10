@@ -1,6 +1,7 @@
 package com.loe.logger.json;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -11,8 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.loe.logger.R;
-
-import androidx.annotation.Nullable;
 
 /**
  * Created by yuyuhang on 2017/11/29.

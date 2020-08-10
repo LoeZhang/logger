@@ -1,18 +1,18 @@
 package com.loe.logger.viewpager;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 
 public class LoggerFragAdapter extends FragmentPagerAdapter
 {
 	private List<Fragment> fragments; // Fragment数组
 
 	public LoggerFragAdapter(FragmentManager fragmentManager,
-                             List<LoggerViewPagerItem> items)
+							 List<LoggerViewPagerItem> items)
 	{
 		super(fragmentManager);
 		fragments = new ArrayList<Fragment>();

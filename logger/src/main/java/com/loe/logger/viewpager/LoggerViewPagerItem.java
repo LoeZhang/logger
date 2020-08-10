@@ -1,10 +1,9 @@
 package com.loe.logger.viewpager;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
-
-import androidx.fragment.app.Fragment;
 
 /**
  * ViewPager选项卡基类
