@@ -3,7 +3,6 @@ package com.loe.logger
 import android.app.Application
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.util.Log
 import com.loe.logger.db.LoggerIdTimeDb
 import com.loe.logger.db.LoggerSharedManager
@@ -207,3 +206,28 @@ object LoeLogger
         }
     }
 }
+
+//      private var touchCount = 1
+//      private var lastTouchTime = 0L
+//      override fun onTouchEvent(ev: MotionEvent)
+//      {
+//          if (ev?.action == MotionEvent.ACTION_DOWN)
+//          {
+//              if (System.currentTimeMillis() - lastTouchTime < 800)
+//              {
+//                  touchCount++
+//                  if (touchCount == 3 && ev?.rawY < px(100))
+//                  {
+//                      LoeLogger.toLogger(activity)
+//                  }
+//              } else
+//              {
+//                  touchCount = 1
+//              }
+//              lastTouchTime = System.currentTimeMillis()
+//          }
+//          if (ev?.action == MotionEvent.ACTION_MOVE)
+//          {
+//              touchCount = 0
+//          }
+//      }
