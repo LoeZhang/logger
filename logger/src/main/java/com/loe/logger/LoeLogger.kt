@@ -47,16 +47,23 @@ object LoeLogger
      */
     fun net(url: String, params: String, result: String)
     {
+        net(url, params, "", result)
+    }
+
+    fun net(url: String, params: String, headers: String, result: String)
+    {
         if (dbNet != null)
         {
             dbNet?.insert(
                 JSONObject()
                     .put("url", url)
                     .put("params", params)
+                    .put("headers", headers)
                     .put("result", result)
             )
             // log
             Log.d("PRETTYLOGGER", "url：$url")
+            if(headers.isNotEmpty()) Log.d("PRETTYLOGGER", "headers：" + headers.replace("\n", " "))
             Log.d("PRETTYLOGGER", "params：" + params.replace("\n", " "))
             try
             {

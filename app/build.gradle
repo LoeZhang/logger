@@ -32,6 +32,6 @@ dependencies {
 //    implementation 'androidx.core:core-ktx:1.0.2'
 //    testImplementation 'junit:junit:4.12'
 
-//    implementation project(':logger')
-    implementation 'com.github.LoeZhang:logger:0.0.3'
+    implementation project(':logger')
+//    implementation 'com.github.LoeZhang:logger:0.0.4'
 }

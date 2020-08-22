@@ -16,7 +16,10 @@ class MainActivity : AppCompatActivity()
 
         buttonAdd.setOnClickListener()
         {
-            LoeLogger.net("sdsddssd" + Math.random(), "sds sdsd sdsjsdh可接受的", "{'name':'顺哥哥'}")
+            LoeLogger.net("sdsddssd" + Math.random(),
+                "sds sdsd sdsjsdh可接受的",
+                "GDFGDFG水电费水电费223232",
+                "{'name':'顺哥哥'}")
         }
         buttonJump.setOnClickListener()
         {
@@ -32,10 +35,10 @@ class MainActivity : AppCompatActivity()
     {
         if (ev?.action == MotionEvent.ACTION_DOWN)
         {
-            if (System.currentTimeMillis() - lastTouchTime < 400)
+            if (System.currentTimeMillis() - lastTouchTime < 800)
             {
                 touchCount++
-                if (touchCount == 3 && ev?.rawY < LoggerTools.dp_px(80.0))
+                if (touchCount == 3 && ev?.rawY < LoggerTools.dp_px(100.0))
                 {
                     LoeLogger.toLogger(this)
                 }

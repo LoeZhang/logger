@@ -12,9 +12,9 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="#f8f8f8"
-        android:listSelector="@android:color/transparent"
         android:divider="#22dd2222"
         android:dividerHeight="1px"
+        android:listSelector="@android:color/transparent"
         android:scrollbars="vertical" />
 
     <View
@@ -28,47 +28,44 @@
         android:layout_weight="1"
         android:background="@android:color/white">
 
-        <LinearLayout
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="15dp">
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="15dp">
 
-            <FrameLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/textTag"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:text="logger："
+                android:textColor="#dd2222"
+                android:textSize="10dp" />
 
-                <TextView
-                    android:id="@+id/textTag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="logger："
-                    android:textColor="#dd2222"
-                    android:textSize="10dp" />
-
-                <TextView
-                    android:id="@+id/buttonJson"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_gravity="right"
-                    android:background="@drawable/logger_button_line_corner"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:paddingHorizontal="7dp"
-                    android:text="Json查看器"
-                    android:textColor="#dd2222"
-                    android:textSize="8dp" />
-            </FrameLayout>
+            <TextView
+                android:id="@+id/buttonJson"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_gravity="right"
+                android:background="@drawable/logger_button_line_corner"
+                android:clickable="true"
+                android:gravity="center"
+                android:paddingHorizontal="10dp"
+                android:text="Json查看器"
+                android:textColor="#dd2222"
+                android:textSize="8dp" />
 
             <TextView
                 android:id="@+id/textMsg"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?selectableItemBackground"
+                android:layout_marginTop="15dp"
                 android:clickable="true"
+                android:paddingTop="5dp"
+                android:paddingBottom="15dp"
+                android:textIsSelectable="true"
                 android:textSize="10dp" />
-
-        </LinearLayout>
+        </FrameLayout>
     </ScrollView>
 </LinearLayout>

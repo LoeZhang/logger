@@ -12,7 +12,7 @@ import com.loe.logger.util.LoggerTools
 import kotlinx.android.synthetic.main.logger_log_fragment.*
 import org.json.JSONObject
 
-class LoggerLogFragment : Fragment(), View.OnLongClickListener
+class LoggerLogFragment : Fragment(), View.OnClickListener
 {
     class Bean(json: JSONObject)
     {
@@ -59,7 +59,7 @@ class LoggerLogFragment : Fragment(), View.OnLongClickListener
             select(0)
         }
 
-        if(list.size > 30)
+        if (list.size > 30)
         {
             LoeLogger.clear(false, true)
         }
@@ -83,14 +83,14 @@ class LoggerLogFragment : Fragment(), View.OnLongClickListener
             select(i)
         }
 
-        textMsg.setOnLongClickListener(this)
+        textMsg.setOnClickListener(this)
     }
 
     private fun select(i: Int)
     {
         val bean = list[i]
         adapter.selectId = bean.id
-        textTag.text = bean.tag+"："
+        textTag.text = bean.tag + "："
         textMsg.text = bean.msg
         if (bean.msgJson == null)
         {
@@ -107,10 +107,19 @@ class LoggerLogFragment : Fragment(), View.OnLongClickListener
         adapter.notifyDataSetChanged()
     }
 
-    override fun onLongClick(view: View?): Boolean
+    override fun onClick(view: View)
     {
-        LoggerTools.copyToClipboard(activity!!, (view as TextView).text.toString())
-        LoggerTools.show(activity!!, "已复制到剪切板")
-        return false
+        if (view.tag == null) view.tag = 0L
+
+        val lastTime = view.tag as Long
+        if (System.currentTimeMillis() - lastTime < 500)
+        {
+            LoggerTools.copyToClipboard(activity!!, (view as TextView).text.toString())
+            LoggerTools.show(activity!!, "已复制到剪切板")
+            view.tag = 0L
+        } else
+        {
+            view.tag = System.currentTimeMillis()
+        }
     }
 }
