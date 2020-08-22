@@ -211,12 +211,12 @@ object LoeLogger
 //      private var lastTouchTime = 0L
 //      override fun onTouchEvent(ev: MotionEvent)
 //      {
-//          if (ev?.action == MotionEvent.ACTION_DOWN)
+//          if (ev.action == MotionEvent.ACTION_DOWN)
 //          {
 //              if (System.currentTimeMillis() - lastTouchTime < 800)
 //              {
 //                  touchCount++
-//                  if (touchCount == 3 && ev?.rawY < px(100))
+//                  if (touchCount == 3 && ev.rawY < px(100))
 //                  {
 //                      LoeLogger.toLogger(activity)
 //                  }
@@ -226,7 +226,7 @@ object LoeLogger
 //              }
 //              lastTouchTime = System.currentTimeMillis()
 //          }
-//          if (ev?.action == MotionEvent.ACTION_MOVE)
+//          if (ev.action == MotionEvent.ACTION_MOVE)
 //          {
 //              touchCount = 0
 //          }
