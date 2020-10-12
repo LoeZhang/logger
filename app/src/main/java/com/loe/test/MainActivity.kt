@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MotionEvent
 import com.loe.logger.LoeLogger
-import com.loe.logger.util.LoggerTools
+import com.loe.logger.util.LoeDoubleTouch
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity()
@@ -29,29 +29,11 @@ class MainActivity : AppCompatActivity()
 
     ////////////////////////////////////////////// logger ////////////////////////////////////////////////
 
-    private var touchCount = 1
-    private var lastTouchTime = 0L
-    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean
+    private var doubleTouch = LoeDoubleTouch(this)
+
+    override fun dispatchTouchEvent(e: MotionEvent): Boolean
     {
-        if (ev?.action == MotionEvent.ACTION_DOWN)
-        {
-            if (System.currentTimeMillis() - lastTouchTime < 800)
-            {
-                touchCount++
-                if (touchCount == 3 && ev?.rawY < LoggerTools.dp_px(100.0))
-                {
-                    LoeLogger.toLogger(this)
-                }
-            } else
-            {
-                touchCount = 1
-            }
-            lastTouchTime = System.currentTimeMillis()
-        }
-        if (ev?.action == MotionEvent.ACTION_MOVE)
-        {
-            touchCount = 0
-        }
-        return super.dispatchTouchEvent(ev)
+        doubleTouch.dispatchTouchEvent(e)
+        return super.dispatchTouchEvent(e)
     }
 }
