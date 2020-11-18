@@ -23,10 +23,10 @@ class LoeDoubleTouch(private val context: Context)
             }
             MotionEvent.ACTION_UP ->
             {
-                if (System.currentTimeMillis() - lastTouchTime < 500)
+                if (System.currentTimeMillis() - lastTouchTime < 400)
                 {
                     touchCount++
-                    if (touchCount == 3 && e.rawY < LoggerTools.dp_px(100.0))
+                    if (touchCount == 3 && e.rawY < LoggerTools.dp_px(68.0))
                     {
                         LoeLogger.toLogger(context)
                     }
