@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity()
         }
         buttonJump.setOnClickListener()
         {
-            LoeLogger.d("{'name':'大地撒大声地'}")
+            LoeLogger.d("双方都{'name':'大地撒大声地'}是的是的实施的快速的解决的健康的时间开始的讲课的健康加快速度加快对数据库时代")
         }
     }
 

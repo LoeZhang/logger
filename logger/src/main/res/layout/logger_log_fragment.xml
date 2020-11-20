@@ -60,7 +60,7 @@
                 android:id="@+id/textMsg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="30dp"
                 android:clickable="true"
                 android:paddingTop="5dp"
                 android:paddingBottom="15dp"
