@@ -3,6 +3,7 @@ package com.loe.logger
 import android.app.Application
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.util.Log
 import com.loe.logger.db.LoggerIdTimeDb
 import com.loe.logger.db.LoggerSharedManager
@@ -36,7 +37,7 @@ object LoeLogger
      */
     fun toLogger(context: Context)
     {
-        if (db != null) context.startActivity(Intent(context, LoggerActivity::class.java))
+        if (db != null) context.startActivity(Intent(context, LoggerActivity::class.java).addFlags(FLAG_ACTIVITY_NEW_TASK))
     }
 
     /****************************************** net *****************************************/
